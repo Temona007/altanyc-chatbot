@@ -1,0 +1,43 @@
+{
+  "fetchedAt": "2025-09-18T05:36:52.801Z",
+  "source": "RapidAPI",
+  "totalListings": 3,
+  "listings": [
+    {
+      "id": "mock-1758173812801-1",
+      "title": "Luxury Manhattan Apartment",
+      "price": "$3,200,000",
+      "address": "456 Park Avenue, New York, NY 10022",
+      "beds": "4",
+      "baths": "3",
+      "sqft": "2,100",
+      "link": "https://altanewyork.com/property/456",
+      "source": "Mock Data",
+      "scrapedAt": "2025-09-18T05:36:52.801Z"
+    },
+    {
+      "id": "mock-1758173812801-2",
+      "title": "Modern Brooklyn Condo",
+      "price": "$1,850,000",
+      "address": "789 Brooklyn Heights, Brooklyn, NY 11201",
+      "beds": "3",
+      "baths": "2",
+      "sqft": "1,500",
+      "link": "https://altanewyork.com/property/789",
+      "source": "Mock Data",
+      "scrapedAt": "2025-09-18T05:36:52.801Z"
+    },
+    {
+      "id": "mock-1758173812801-3",
+      "title": "Charming Upper East Side Co-op",
+      "price": "$2,100,000",
+      "address": "321 East 75th Street, New York, NY 10021",
+      "beds": "2",
+      "baths": "2",
+      "sqft": "1,200",
+      "link": "https://altanewyork.com/property/321",
+      "source": "Mock Data",
+      "scrapedAt": "2025-09-18T05:36:52.801Z"
+    }
+  ]
+}
