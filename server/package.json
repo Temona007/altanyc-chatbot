@@ -8,8 +8,6 @@
     "dev": "PORT=5001 nodemon index.js"
   },
   "dependencies": {
-    "@langchain/openai": "^0.0.14",
-    "@langchain/pinecone": "^0.0.1",
     "@pinecone-database/pinecone": "^6.1.2",
     "axios": "^1.12.2",
     "cheerio": "^1.1.2",
