@@ -17,8 +17,9 @@ services:
   - type: web
     name: alta-ny-chatbot-backend
     env: node
-    buildCommand: cd server && npm install
-    startCommand: cd server && npm start
+    rootDir: server
+    buildCommand: npm ci --omit=dev
+    startCommand: node index.js
     envVars:
       - key: NODE_ENV
         value: production
