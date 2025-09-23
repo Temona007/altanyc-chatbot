@@ -2,6 +2,8 @@ const { Pinecone } = require('@pinecone-database/pinecone');
 const OpenAI = require('openai');
 const { v4: uuidv4 } = require('uuid');
 
+// Fixed: Removed LangChain dependencies - using direct OpenAI SDK
+
 class VectorService {
   constructor() {
     this.pinecone = null;
