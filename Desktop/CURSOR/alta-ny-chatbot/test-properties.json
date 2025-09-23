@@ -1,0 +1,32 @@
+{
+  "properties": [
+    {
+      "id": "test-1",
+      "title": "Test Manhattan Apartment",
+      "price": "$2,500,000",
+      "address": "123 Test Street, New York, NY 10001",
+      "beds": "3",
+      "baths": "2",
+      "sqft": "1,500",
+      "description": "Beautiful test apartment in Manhattan with great views and modern amenities."
+    },
+    {
+      "id": "test-2", 
+      "title": "Test Brooklyn Condo",
+      "price": "$1,800,000",
+      "address": "456 Test Avenue, Brooklyn, NY 11201",
+      "beds": "2",
+      "baths": "2",
+      "sqft": "1,200",
+      "description": "Modern test condo in Brooklyn with excellent transportation access."
+    }
+  ],
+  "metadata": {
+    "source": "Test Data",
+    "created": "2025-09-18",
+    "totalProperties": 2
+  }
+}
+
+
+

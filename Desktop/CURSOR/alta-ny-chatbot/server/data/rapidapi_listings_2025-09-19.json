@@ -1,0 +1,673 @@
+{
+  "fetchedAt": "2025-09-19T03:36:09.547Z",
+  "source": "RapidAPI",
+  "totalListings": 5,
+  "listings": [
+    {
+      "id": "4996184057",
+      "title": "494 E 96th St",
+      "price": "$500,000",
+      "address": "494 E 96th St, Brooklyn, NY, 11212",
+      "beds": 16,
+      "baths": "N/A",
+      "sqft": "N/A",
+      "link": null,
+      "source": "Realtor.com API",
+      "scrapedAt": "2025-09-19T03:36:09.546Z",
+      "propertyType": "multi_family",
+      "lotSize": "N/A",
+      "yearBuilt": "N/A",
+      "photos": [
+        {
+          "href": "https://ap.rdcpix.com/00bf0d99aff13732a0687258b6a1f73dl-m3092275580s.jpg"
+        },
+        {
+          "href": "https://ap.rdcpix.com/00bf0d99aff13732a0687258b6a1f73dl-m2210093936s.jpg"
+        }
+      ],
+      "rawData": {
+        "advertisers": [
+          {
+            "builder": null,
+            "type": "seller"
+          }
+        ],
+        "branding": [
+          {
+            "name": "Joshuas Realty",
+            "photo": null,
+            "type": "Office"
+          }
+        ],
+        "community": null,
+        "description": {
+          "baths_consolidated": "4",
+          "baths_max": null,
+          "baths_min": null,
+          "beds": 16,
+          "beds_max": null,
+          "beds_min": null,
+          "lot_sqft": null,
+          "name": null,
+          "sold_date": "2006-05-04",
+          "sold_price": 635000,
+          "sqft": null,
+          "sqft_max": null,
+          "sqft_min": null,
+          "sub_type": null,
+          "type": "multi_family"
+        },
+        "flags": {
+          "is_coming_soon": null,
+          "is_contingent": null,
+          "is_foreclosure": null,
+          "is_new_construction": null,
+          "is_new_listing": false,
+          "is_pending": null,
+          "is_price_reduced": null
+        },
+        "lead_attributes": {
+          "lead_type": "co_broke",
+          "market_type": "unity",
+          "opcity_lead_attributes": {
+            "cashback_enabled": false,
+            "flip_the_market_enabled": false
+          },
+          "ready_connect_mortgage": {
+            "show_contact_a_lender": false,
+            "show_veterans_united": false
+          },
+          "show_contact_an_agent": true
+        },
+        "list_date": "2024-12-05T23:01:17.000000Z",
+        "list_price": 500000,
+        "listing_id": "2975855544",
+        "location": {
+          "address": {
+            "city": "Brooklyn",
+            "coordinate": {
+              "lat": 40.655854,
+              "lon": -73.916062
+            },
+            "line": "494 E 96th St",
+            "postal_code": "11212",
+            "state": "New York",
+            "state_code": "NY"
+          },
+          "county": {
+            "fips_code": "36047",
+            "name": "Kings"
+          },
+          "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=494%20E%2096th%20St%2C%20Brooklyn%2C%20NY%2011212&size=640x480&source=outdoor&signature=yukIuWvoyXJz3bQ1-Rek-rxsAoA="
+        },
+        "matterport": false,
+        "open_houses": null,
+        "permalink": "494-E-96th-St_Brooklyn_NY_11212_M49961-84057",
+        "photos": [
+          {
+            "href": "https://ap.rdcpix.com/00bf0d99aff13732a0687258b6a1f73dl-m3092275580s.jpg"
+          },
+          {
+            "href": "https://ap.rdcpix.com/00bf0d99aff13732a0687258b6a1f73dl-m2210093936s.jpg"
+          }
+        ],
+        "price_reduced_amount": null,
+        "primary_photo": {
+          "href": "https://ap.rdcpix.com/00bf0d99aff13732a0687258b6a1f73dl-m3092275580s.jpg"
+        },
+        "products": {
+          "brand_name": "basic_opt_in",
+          "products": [
+            "core.agent",
+            "co_broke"
+          ]
+        },
+        "property_id": "4996184057",
+        "rent_to_own": null,
+        "search_promotions": null,
+        "source": {
+          "agents": [
+            {
+              "office_name": null
+            }
+          ],
+          "id": "STNY",
+          "plan_id": null,
+          "spec_id": null,
+          "type": "mls"
+        },
+        "status": "for_sale",
+        "virtual_tours": null
+      }
+    },
+    {
+      "id": "3910034047",
+      "title": "403 E 96th St",
+      "price": "$695,000",
+      "address": "403 E 96th St, Brooklyn, NY, 11212",
+      "beds": 8,
+      "baths": "N/A",
+      "sqft": "3,198",
+      "link": null,
+      "source": "Realtor.com API",
+      "scrapedAt": "2025-09-19T03:36:09.547Z",
+      "propertyType": "multi_family",
+      "lotSize": "2,499 sqft",
+      "yearBuilt": "N/A",
+      "photos": [
+        {
+          "href": "https://ap.rdcpix.com/cd7d65aed336a90d4e6d034bc9a3570fl-m827373855s.jpg"
+        }
+      ],
+      "rawData": {
+        "advertisers": [
+          {
+            "builder": null,
+            "type": "seller"
+          }
+        ],
+        "branding": [
+          {
+            "name": "Janus Realty Group Llc",
+            "photo": null,
+            "type": "Office"
+          }
+        ],
+        "community": null,
+        "description": {
+          "baths_consolidated": "4",
+          "baths_max": null,
+          "baths_min": null,
+          "beds": 8,
+          "beds_max": null,
+          "beds_min": null,
+          "lot_sqft": 2499,
+          "name": null,
+          "sold_date": "2007-03-12",
+          "sold_price": 650000,
+          "sqft": 3198,
+          "sqft_max": null,
+          "sqft_min": null,
+          "sub_type": null,
+          "type": "multi_family"
+        },
+        "flags": {
+          "is_coming_soon": null,
+          "is_contingent": null,
+          "is_foreclosure": null,
+          "is_new_construction": null,
+          "is_new_listing": false,
+          "is_pending": null,
+          "is_price_reduced": null
+        },
+        "lead_attributes": {
+          "lead_type": "co_broke",
+          "market_type": "unity",
+          "opcity_lead_attributes": {
+            "cashback_enabled": false,
+            "flip_the_market_enabled": false
+          },
+          "ready_connect_mortgage": {
+            "show_contact_a_lender": false,
+            "show_veterans_united": false
+          },
+          "show_contact_an_agent": true
+        },
+        "list_date": "2025-08-20T06:39:30.000000Z",
+        "list_price": 695000,
+        "listing_id": "2985512256",
+        "location": {
+          "address": {
+            "city": "Brooklyn",
+            "coordinate": {
+              "lat": 40.657902,
+              "lon": -73.917526
+            },
+            "line": "403 E 96th St",
+            "postal_code": "11212",
+            "state": "New York",
+            "state_code": "NY"
+          },
+          "county": {
+            "fips_code": "36047",
+            "name": "Kings"
+          },
+          "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=403%20E%2096th%20St%2C%20Brooklyn%2C%20NY%2011212&size=640x480&source=outdoor&signature=4zp7KopaVHrW1i16i49mKCMcano="
+        },
+        "matterport": false,
+        "open_houses": null,
+        "permalink": "403-E-96th-St_Brooklyn_NY_11212_M39100-34047",
+        "photos": [
+          {
+            "href": "https://ap.rdcpix.com/cd7d65aed336a90d4e6d034bc9a3570fl-m827373855s.jpg"
+          }
+        ],
+        "price_reduced_amount": null,
+        "primary_photo": {
+          "href": "https://ap.rdcpix.com/cd7d65aed336a90d4e6d034bc9a3570fl-m827373855s.jpg"
+        },
+        "products": {
+          "brand_name": "basic_opt_in",
+          "products": [
+            "core.agent",
+            "co_broke"
+          ]
+        },
+        "property_id": "3910034047",
+        "rent_to_own": null,
+        "search_promotions": null,
+        "source": {
+          "agents": [
+            {
+              "office_name": null
+            }
+          ],
+          "id": "STNY",
+          "plan_id": null,
+          "spec_id": null,
+          "type": "mls"
+        },
+        "status": "for_sale",
+        "virtual_tours": null
+      }
+    },
+    {
+      "id": "4138615267",
+      "title": "234 Freedom Ave",
+      "price": "$275,000",
+      "address": "234 Freedom Ave, Staten Island, NY, 10314",
+      "beds": 3,
+      "baths": "N/A",
+      "sqft": "1,200",
+      "link": null,
+      "source": "Realtor.com API",
+      "scrapedAt": "2025-09-19T03:36:09.547Z",
+      "propertyType": "single_family",
+      "lotSize": "2,750 sqft",
+      "yearBuilt": "N/A",
+      "photos": [
+        {
+          "href": "https://ap.rdcpix.com/cce4f7cfdaa8c419f03a308bcd590541l-m3002429445s.jpg"
+        }
+      ],
+      "rawData": {
+        "advertisers": [
+          {
+            "builder": null,
+            "type": "seller"
+          }
+        ],
+        "branding": [
+          {
+            "name": "Hanover Realty Corp Ny",
+            "photo": null,
+            "type": "Office"
+          }
+        ],
+        "community": null,
+        "description": {
+          "baths_consolidated": "2",
+          "baths_max": null,
+          "baths_min": null,
+          "beds": 3,
+          "beds_max": null,
+          "beds_min": null,
+          "lot_sqft": 2750,
+          "name": null,
+          "sold_date": "2007-02-21",
+          "sold_price": 437000,
+          "sqft": 1200,
+          "sqft_max": null,
+          "sqft_min": null,
+          "sub_type": null,
+          "type": "single_family"
+        },
+        "flags": {
+          "is_coming_soon": null,
+          "is_contingent": true,
+          "is_foreclosure": null,
+          "is_new_construction": null,
+          "is_new_listing": false,
+          "is_pending": null,
+          "is_price_reduced": null
+        },
+        "lead_attributes": {
+          "lead_type": "co_broke",
+          "market_type": "unity",
+          "opcity_lead_attributes": {
+            "cashback_enabled": false,
+            "flip_the_market_enabled": false
+          },
+          "ready_connect_mortgage": {
+            "show_contact_a_lender": false,
+            "show_veterans_united": false
+          },
+          "show_contact_an_agent": true
+        },
+        "list_date": "2025-08-14T17:43:43.000000Z",
+        "list_price": 275000,
+        "listing_id": "2985343784",
+        "location": {
+          "address": {
+            "city": "Staten Island",
+            "coordinate": {
+              "lat": 40.593676,
+              "lon": -74.164497
+            },
+            "line": "234 Freedom Ave",
+            "postal_code": "10314",
+            "state": "New York",
+            "state_code": "NY"
+          },
+          "county": {
+            "fips_code": "36085",
+            "name": "Richmond"
+          },
+          "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=234%20Freedom%20Ave%2C%20Staten%20Island%2C%20NY%2010314&size=640x480&source=outdoor&signature=ZXm0LlTcDZgd8yG6ek4ihxHB854="
+        },
+        "matterport": false,
+        "open_houses": null,
+        "permalink": "234-Freedom-Ave_Staten-Island_NY_10314_M41386-15267",
+        "photos": [
+          {
+            "href": "https://ap.rdcpix.com/cce4f7cfdaa8c419f03a308bcd590541l-m3002429445s.jpg"
+          }
+        ],
+        "price_reduced_amount": null,
+        "primary_photo": {
+          "href": "https://ap.rdcpix.com/cce4f7cfdaa8c419f03a308bcd590541l-m3002429445s.jpg"
+        },
+        "products": {
+          "brand_name": "basic_opt_in",
+          "products": [
+            "co_broke"
+          ]
+        },
+        "property_id": "4138615267",
+        "rent_to_own": null,
+        "search_promotions": null,
+        "source": {
+          "agents": [
+            {
+              "office_name": null
+            }
+          ],
+          "id": "STNY",
+          "plan_id": null,
+          "spec_id": null,
+          "type": "mls"
+        },
+        "status": "for_sale",
+        "virtual_tours": null
+      }
+    },
+    {
+      "id": "3616529715",
+      "title": "9536 Schenck St Apt 3",
+      "price": "$1",
+      "address": "9536 Schenck St Apt 3, Brooklyn, NY, 11236",
+      "beds": 2,
+      "baths": "N/A",
+      "sqft": "1,400",
+      "link": null,
+      "source": "Realtor.com API",
+      "scrapedAt": "2025-09-19T03:36:09.547Z",
+      "propertyType": "condos",
+      "lotSize": "N/A",
+      "yearBuilt": "N/A",
+      "photos": [
+        {
+          "href": "https://ap.rdcpix.com/696b3abb1788af636ffd7191e1039a0bl-m4209560039s.jpg"
+        },
+        {
+          "href": "https://ap.rdcpix.com/696b3abb1788af636ffd7191e1039a0bl-m2401221400s.jpg"
+        }
+      ],
+      "rawData": {
+        "advertisers": [
+          {
+            "builder": null,
+            "type": "seller"
+          }
+        ],
+        "branding": [
+          {
+            "name": "PEERLESS PROPERTIES CORP.",
+            "photo": null,
+            "type": "Office"
+          }
+        ],
+        "community": null,
+        "description": {
+          "baths_consolidated": "1",
+          "baths_max": null,
+          "baths_min": null,
+          "beds": 2,
+          "beds_max": null,
+          "beds_min": null,
+          "lot_sqft": null,
+          "name": null,
+          "sold_date": "2006-11-09",
+          "sold_price": 375180,
+          "sqft": 1400,
+          "sqft_max": null,
+          "sqft_min": null,
+          "sub_type": "condo",
+          "type": "condos"
+        },
+        "flags": {
+          "is_coming_soon": null,
+          "is_contingent": null,
+          "is_foreclosure": null,
+          "is_new_construction": null,
+          "is_new_listing": false,
+          "is_pending": null,
+          "is_price_reduced": null
+        },
+        "lead_attributes": {
+          "lead_type": "co_broke",
+          "market_type": "unity",
+          "opcity_lead_attributes": {
+            "cashback_enabled": false,
+            "flip_the_market_enabled": false
+          },
+          "ready_connect_mortgage": {
+            "show_contact_a_lender": false,
+            "show_veterans_united": false
+          },
+          "show_contact_an_agent": true
+        },
+        "list_date": "2025-05-02T15:21:27.000000Z",
+        "list_price": 1,
+        "listing_id": "2981343021",
+        "location": {
+          "address": {
+            "city": "Brooklyn",
+            "coordinate": {
+              "lat": 40.630976,
+              "lon": -73.887328
+            },
+            "line": "9536 Schenck St Apt 3",
+            "postal_code": "11236",
+            "state": "New York",
+            "state_code": "NY"
+          },
+          "county": {
+            "fips_code": "36047",
+            "name": "Kings"
+          },
+          "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=9536%20Schenck%20St%20Apt%203%2C%20Brooklyn%2C%20NY%2011236&size=640x480&source=outdoor&signature=459d0Crv23UjOmYfhuD95Mkewv0="
+        },
+        "matterport": false,
+        "open_houses": null,
+        "permalink": "9536-Schenck-St-Apt-3_Brooklyn_NY_11236_M36165-29715",
+        "photos": [
+          {
+            "href": "https://ap.rdcpix.com/696b3abb1788af636ffd7191e1039a0bl-m4209560039s.jpg"
+          },
+          {
+            "href": "https://ap.rdcpix.com/696b3abb1788af636ffd7191e1039a0bl-m2401221400s.jpg"
+          }
+        ],
+        "price_reduced_amount": null,
+        "primary_photo": {
+          "href": "https://ap.rdcpix.com/696b3abb1788af636ffd7191e1039a0bl-m4209560039s.jpg"
+        },
+        "products": {
+          "brand_name": "basic_opt_in",
+          "products": [
+            "core.agent",
+            "co_broke"
+          ]
+        },
+        "property_id": "3616529715",
+        "rent_to_own": null,
+        "search_promotions": null,
+        "source": {
+          "agents": [
+            {
+              "office_name": null
+            }
+          ],
+          "id": "BONY",
+          "plan_id": null,
+          "spec_id": null,
+          "type": "mls"
+        },
+        "status": "for_sale",
+        "virtual_tours": null
+      }
+    },
+    {
+      "id": "4156809118",
+      "title": "5515 Tilden Ave",
+      "price": "$325,000",
+      "address": "5515 Tilden Ave, Brooklyn, NY, 11203",
+      "beds": 3,
+      "baths": "N/A",
+      "sqft": "1,252",
+      "link": null,
+      "source": "Realtor.com API",
+      "scrapedAt": "2025-09-19T03:36:09.547Z",
+      "propertyType": "single_family",
+      "lotSize": "3,920 sqft",
+      "yearBuilt": "N/A",
+      "photos": [
+        {
+          "href": "https://ap.rdcpix.com/d278151fed157f9fd94d91afc1f8c706l-m948283631s.jpg"
+        }
+      ],
+      "rawData": {
+        "advertisers": [
+          {
+            "builder": null,
+            "type": "seller"
+          }
+        ],
+        "branding": [
+          {
+            "name": "Janus Realty Group Llc",
+            "photo": null,
+            "type": "Office"
+          }
+        ],
+        "community": null,
+        "description": {
+          "baths_consolidated": "2",
+          "baths_max": null,
+          "baths_min": null,
+          "beds": 3,
+          "beds_max": null,
+          "beds_min": null,
+          "lot_sqft": 3920,
+          "name": null,
+          "sold_date": "1998-01-21",
+          "sold_price": 171000,
+          "sqft": 1252,
+          "sqft_max": null,
+          "sqft_min": null,
+          "sub_type": null,
+          "type": "single_family"
+        },
+        "flags": {
+          "is_coming_soon": null,
+          "is_contingent": null,
+          "is_foreclosure": null,
+          "is_new_construction": null,
+          "is_new_listing": false,
+          "is_pending": null,
+          "is_price_reduced": null
+        },
+        "lead_attributes": {
+          "lead_type": "co_broke",
+          "market_type": "unity",
+          "opcity_lead_attributes": {
+            "cashback_enabled": false,
+            "flip_the_market_enabled": false
+          },
+          "ready_connect_mortgage": {
+            "show_contact_a_lender": false,
+            "show_veterans_united": false
+          },
+          "show_contact_an_agent": true
+        },
+        "list_date": "2025-06-18T16:03:15.000000Z",
+        "list_price": 325000,
+        "listing_id": "2983256831",
+        "location": {
+          "address": {
+            "city": "Brooklyn",
+            "coordinate": {
+              "lat": 40.648705,
+              "lon": -73.924667
+            },
+            "line": "5515 Tilden Ave",
+            "postal_code": "11203",
+            "state": "New York",
+            "state_code": "NY"
+          },
+          "county": {
+            "fips_code": "36047",
+            "name": "Kings"
+          },
+          "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=5515%20Tilden%20Ave%2C%20Brooklyn%2C%20NY%2011203&size=640x480&source=outdoor&signature=o6tW_QKNkCaFb6LuiJ2dRMYnjE8="
+        },
+        "matterport": false,
+        "open_houses": null,
+        "permalink": "5515-Tilden-Ave_Brooklyn_NY_11203_M41568-09118",
+        "photos": [
+          {
+            "href": "https://ap.rdcpix.com/d278151fed157f9fd94d91afc1f8c706l-m948283631s.jpg"
+          }
+        ],
+        "price_reduced_amount": null,
+        "primary_photo": {
+          "href": "https://ap.rdcpix.com/d278151fed157f9fd94d91afc1f8c706l-m948283631s.jpg"
+        },
+        "products": {
+          "brand_name": "basic_opt_in",
+          "products": [
+            "core.agent",
+            "co_broke"
+          ]
+        },
+        "property_id": "4156809118",
+        "rent_to_own": null,
+        "search_promotions": null,
+        "source": {
+          "agents": [
+            {
+              "office_name": "JANUS REALTY GROUP LLC"
+            }
+          ],
+          "id": "STNY",
+          "plan_id": null,
+          "spec_id": null,
+          "type": "mls"
+        },
+        "status": "for_sale",
+        "virtual_tours": null
+      }
+    }
+  ]
+}

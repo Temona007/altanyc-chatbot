@@ -1,0 +1,22 @@
+{
+  "name": "alta-ny-chatbot",
+  "version": "1.0.0",
+  "description": "Alta New York Real Estate AI Assistant",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
+    "setup": "node server/scripts/setup.js",
+    "process-content": "node server/scripts/processExistingContent.js",
+    "start": "cd server && npm start"
+  },
+  "keywords": ["chatbot", "ai", "real-estate", "knowledge-base", "rag", "openai", "pinecone", "nyc"],
+  "author": "Alta New York Real Estate",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
