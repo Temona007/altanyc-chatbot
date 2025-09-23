@@ -1,5 +1,5 @@
 const { Pinecone } = require('@pinecone-database/pinecone');
-const { OpenAIEmbeddings } = require('@langchain/openai');
+const OpenAI = require('openai');
 const { v4: uuidv4 } = require('uuid');
 
 class VectorService {
@@ -23,10 +23,9 @@ class VectorService {
         apiKey: process.env.PINECONE_API_KEY
       });
 
-      // Initialize OpenAI embeddings
-      this.embeddings = new OpenAIEmbeddings({
-        openAIApiKey: process.env.OPENAI_API_KEY,
-        modelName: 'text-embedding-ada-002' // 1536 dimensions - we'll need to truncate to 1024 for your index
+      // Initialize OpenAI client
+      this.openai = new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY
       });
 
       // Get or create index
@@ -105,7 +104,11 @@ class VectorService {
       }
 
       // Generate embedding
-      const embedding = await this.embeddings.embedQuery(content);
+      const response = await this.openai.embeddings.create({
+        model: 'text-embedding-ada-002',
+        input: content
+      });
+      const embedding = response.data[0].embedding;
       const truncatedEmbedding = this.truncateEmbedding(embedding, 1024);
       
       // Create vector record
@@ -143,7 +146,11 @@ class VectorService {
       
       for (let i = 0; i < chunks.length; i++) {
         const chunk = chunks[i];
-        const embedding = await this.embeddings.embedQuery(chunk);
+        const response = await this.openai.embeddings.create({
+          model: 'text-embedding-ada-002',
+          input: chunk
+        });
+        const embedding = response.data[0].embedding;
         const truncatedEmbedding = this.truncateEmbedding(embedding, 1024);
         
         vectors.push({
@@ -197,7 +204,11 @@ class VectorService {
       }
 
       // Generate query embedding
-      const queryEmbedding = await this.embeddings.embedQuery(query);
+      const response = await this.openai.embeddings.create({
+        model: 'text-embedding-ada-002',
+        input: query
+      });
+      const queryEmbedding = response.data[0].embedding;
       const truncatedQueryEmbedding = this.truncateEmbedding(queryEmbedding, 1024);
 
       // Search in Pinecone
@@ -250,7 +261,11 @@ class VectorService {
 
       // For exact search, we'll use a simple text matching approach
       // In a real implementation, you might want to use a full-text search engine
-      const queryEmbedding = await this.embeddings.embedQuery(query);
+      const response = await this.openai.embeddings.create({
+        model: 'text-embedding-ada-002',
+        input: query
+      });
+      const queryEmbedding = response.data[0].embedding;
       const truncatedQueryEmbedding = this.truncateEmbedding(queryEmbedding, 1024);
       
       const searchResponse = await this.index.query({
