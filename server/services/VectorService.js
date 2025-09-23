@@ -1,5 +1,5 @@
 const { Pinecone } = require('@pinecone-database/pinecone');
-const { OpenAIEmbeddings } = require('@langchain/openai');
+const OpenAI = require('openai');
 const { v4: uuidv4 } = require('uuid');
 
 class VectorService {
