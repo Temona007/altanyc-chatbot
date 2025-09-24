@@ -39,30 +39,39 @@ async function testConnections() {
     console.log('   Please add your Pinecone credentials to server/.env file');
   } else {
     try {
-      const pc = new Pinecone({
-        apiKey: process.env.PINECONE_API_KEY,
-        environment: process.env.PINECONE_ENVIRONMENT
-      });
+        const pc = new Pinecone({
+          apiKey: process.env.PINECONE_API_KEY
+        });
       
-      // List indexes to test connection
-      const indexes = await pc.listIndexes();
-      console.log('✅ Pinecone connection successful!');
-      console.log(`   Available indexes: ${indexes.indexes?.length || 0}`);
-      
-      // Check if our specific index exists
+      // Test connection by trying to get index stats
       const indexName = process.env.PINECONE_INDEX_NAME || 'alta-ny-knowledge-base';
-      const indexExists = indexes.indexes?.some(idx => idx.name === indexName);
       
-      if (indexExists) {
-        console.log(`✅ Index '${indexName}' exists`);
-      } else {
-        console.log(`⚠️  Index '${indexName}' not found`);
-        console.log('   You may need to create this index in Pinecone');
+      try {
+        const index = pc.index(indexName);
+        const stats = await index.describeIndexStats();
+        console.log('✅ Pinecone connection successful!');
+        console.log(`✅ Index '${indexName}' exists and is accessible`);
+        console.log(`   Vector count: ${stats.totalVectorCount || 0}`);
+      } catch (indexError) {
+        if (indexError.message.includes('not found') || indexError.message.includes('does not exist')) {
+          console.log('✅ Pinecone connection successful!');
+          console.log(`⚠️  Index '${indexName}' not found`);
+          console.log('   The system will attempt to create this index automatically');
+        } else {
+          throw indexError;
+        }
       }
       
     } catch (error) {
       console.log('❌ Pinecone connection failed:');
       console.log(`   Error: ${error.message}`);
+      
+      if (error.message.includes('fetch failed')) {
+        console.log('   This usually means:');
+        console.log('   - Invalid API key or environment');
+        console.log('   - Network connectivity issues');
+        console.log('   - Pinecone service is down');
+      }
     }
   }
   
