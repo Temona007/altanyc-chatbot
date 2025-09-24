@@ -55,7 +55,6 @@ app.use(cors({
       callback(new Error('Not allowed by CORS'));
     }
   },
-  origin: true, // Allow all origins temporarily
   credentials: true
 }));
 
