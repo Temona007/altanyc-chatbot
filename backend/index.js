@@ -12,11 +12,6 @@ require('dotenv').config();
 const uploadRoutes = require('./routes/upload');
 const chatRoutes = require('./routes/chat');
 const searchRoutes = require('./routes/search');
-const listingsRoutes = require('./routes/listings');
-const listingsRapidAPIRoutes = require('./routes/listings-rapidapi');
-const listingsSimpleRoutes = require('./routes/listings-simple');
-const realtorAPIRoutes = require('./routes/realtor-api');
-const centralParkRoutes = require('./routes/central-park');
 
 // Import services
 const ChatService = require('./services/ChatService');
@@ -40,7 +35,9 @@ app.use(limiter);
 // CORS configuration
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://alta-ny-chatbot-frontend.onrender.com'
+  'https://alta-ny-chatbot-frontend.onrender.com',
+  'https://frontend.onrender.com',
+  'https://alta-ny-chatbot.onrender.com'
 ];
 
 app.use(cors({
@@ -48,10 +45,16 @@ app.use(cors({
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
     
+    // In development, allow all localhost origins
+    if (process.env.NODE_ENV === 'development' && origin.includes('localhost')) {
+      return callback(null, true);
+    }
+    
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
       console.log('CORS blocked origin:', origin);
+      console.log('Allowed origins:', allowedOrigins);
       callback(new Error('Not allowed by CORS'));
     }
   },
@@ -75,17 +78,11 @@ if (!fs.existsSync(uploadsDir)) {
 const chatService = new ChatService();
 const fileProcessingService = new FileProcessingService();
 const vectorService = new VectorService();
-const centralParkScheduler = new (require('./services/CentralParkScheduler'))();
 
 // Routes
 app.use('/api/upload', uploadRoutes);
 app.use('/api/chat', chatRoutes);
 app.use('/api/search', searchRoutes);
-app.use('/api/listings', listingsRoutes);
-app.use('/api/listings/rapidapi', listingsRapidAPIRoutes);
-app.use('/api/listings-simple', listingsSimpleRoutes);
-app.use('/api/realtor', realtorAPIRoutes);
-app.use('/api/central-park', centralParkRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
@@ -97,6 +94,44 @@ app.get('/api/health', (req, res) => {
       pinecone: !!process.env.PINECONE_API_KEY
     }
   });
+});
+
+// Central Park properties endpoint
+app.get('/api/central-park/properties', async (req, res) => {
+  try {
+    // Look for the most recent Central Park properties file
+    const dataDir = path.join(__dirname, 'data');
+    const files = fs.readdirSync(dataDir).filter(file => 
+      file.startsWith('central_park_properties_') && file.endsWith('.json')
+    );
+    
+    if (files.length === 0) {
+      return res.json({
+        success: false,
+        error: 'No Central Park properties data found'
+      });
+    }
+    
+    // Get the most recent file
+    const latestFile = files.sort().pop();
+    const filePath = path.join(dataDir, latestFile);
+    const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    
+    res.json({
+      success: true,
+      properties: data.properties || data,
+      totalProperties: data.properties ? data.properties.length : data.length,
+      latestFile: latestFile,
+      fetchedAt: data.fetchedAt || new Date().toISOString(),
+      source: 'Local Data File'
+    });
+  } catch (error) {
+    console.error('Error fetching Central Park properties:', error);
+    res.json({
+      success: false,
+      error: 'Failed to fetch Central Park properties'
+    });
+  }
 });
 
 // Files endpoint to show what's in the database
@@ -152,8 +187,7 @@ console.log(`🚀 Alta New York Chatbot Server running on port ${PORT}`);
   Promise.all([
     vectorService.initialize(),
     fileProcessingService.initialize(),
-    chatService.initialize(),
-    centralParkScheduler.initialize()
+    chatService.initialize()
   ]).then(() => {
     console.log('✅ All services initialized successfully');
   }).catch((error) => {
