@@ -37,8 +37,20 @@ const allowedOrigins = [
   'http://localhost:3000',
   'https://alta-ny-chatbot-frontend.onrender.com',
   'https://frontend.onrender.com',
-  'https://alta-ny-chatbot.onrender.com'
-];
+  'https://alta-ny-chatbot.onrender.com',
+  // Newly deployed frontend domain
+  'https://altanyc-chatbot-frontend.onrender.com'
+].filter(Boolean);
+
+// Allow override via env var to avoid future deploy blocks
+if (process.env.FRONTEND_ORIGIN) {
+  allowedOrigins.push(process.env.FRONTEND_ORIGIN);
+}
+
+// In production, allow all Render domains to prevent CORS issues
+if (process.env.NODE_ENV === 'production') {
+  allowedOrigins.push(/^https:\/\/.*\.onrender\.com$/);
+}
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -50,7 +62,22 @@ app.use(cors({
       return callback(null, true);
     }
     
-    if (allowedOrigins.indexOf(origin) !== -1) {
+    // In production, allow all Render domains
+    if (process.env.NODE_ENV === 'production' && origin.includes('.onrender.com')) {
+      return callback(null, true);
+    }
+    
+    // Check if origin matches any allowed origin (string or regex)
+    const isAllowed = allowedOrigins.some(allowedOrigin => {
+      if (typeof allowedOrigin === 'string') {
+        return allowedOrigin === origin;
+      } else if (allowedOrigin instanceof RegExp) {
+        return allowedOrigin.test(origin);
+      }
+      return false;
+    });
+    
+    if (isAllowed) {
       callback(null, true);
     } else {
       console.log('CORS blocked origin:', origin);

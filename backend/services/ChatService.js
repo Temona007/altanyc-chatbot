@@ -198,37 +198,17 @@ Previous conversation:
 ${conversationContext}`;
 
       // Generate response using OpenAI
-      let responseText;
-      try {
-        const completion = await this.openai.chat.completions.create({
-          model: 'gpt-3.5-turbo',
-          messages: [
-            { role: 'system', content: systemPrompt },
-            { role: 'user', content: query }
-          ],
-          max_tokens: 500,
-          temperature: 0.7
-        });
+      const completion = await this.openai.chat.completions.create({
+        model: 'gpt-3.5-turbo',
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: query }
+        ],
+        max_tokens: 500,
+        temperature: 0.7
+      });
 
-        responseText = completion.choices[0].message.content;
-      } catch (error) {
-        if (error.code === 'insufficient_quota' || error.status === 429) {
-          // Fallback response when quota is exceeded
-          responseText = `I'm currently experiencing high demand and my AI service is temporarily unavailable. However, I can still help you with property information! 
-
-🏠 **Available Properties**: I have access to 200+ property listings in the Central Park area.
-
-📊 **What I can help with**:
-- Browse Central Park area properties
-- View property details and photos
-- Get property pricing information
-- Search through our property database
-
-Try clicking the "Central Park" button to see available properties, or ask me about specific neighborhoods or property types!`;
-        } else {
-          throw error;
-        }
-      }
+      let responseText = completion.choices[0].message.content;
 
       // Translate response back if needed
       if (translationEnabled) {

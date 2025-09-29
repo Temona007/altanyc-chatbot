@@ -32,6 +32,3 @@ try {
 console.log('Deployment test completed');
 
 
-
-
-
