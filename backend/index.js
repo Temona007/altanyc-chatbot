@@ -62,11 +62,6 @@ app.use(cors({
       return callback(null, true);
     }
     
-    // In production, allow all Render domains
-    if (process.env.NODE_ENV === 'production' && origin.includes('.onrender.com')) {
-      return callback(null, true);
-    }
-    
     // Check if origin matches any allowed origin (string or regex)
     const isAllowed = allowedOrigins.some(allowedOrigin => {
       if (typeof allowedOrigin === 'string') {

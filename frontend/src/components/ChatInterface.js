@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import API_BASE_URL from '../config/api';
 
@@ -7,6 +7,60 @@ const ChatInterface = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [sessionId] = useState(() => `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
+  const [showScrollButton, setShowScrollButton] = useState(false);
+  const chatContainerRef = useRef(null);
+
+  // Auto-scroll to bottom when messages change
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      // Use setTimeout to ensure DOM is updated
+      setTimeout(() => {
+        chatContainerRef.current.scrollTo({
+          top: chatContainerRef.current.scrollHeight,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+  }, [messages, isLoading]);
+
+  // Also scroll when loading state changes
+  useEffect(() => {
+    if (chatContainerRef.current && isLoading) {
+      setTimeout(() => {
+        chatContainerRef.current.scrollTo({
+          top: chatContainerRef.current.scrollHeight,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+  }, [isLoading]);
+
+  // Handle scroll events to show/hide scroll button
+  useEffect(() => {
+    const chatContainer = chatContainerRef.current;
+    if (!chatContainer) return;
+
+    const handleScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } = chatContainer;
+      const isNearBottom = scrollHeight - scrollTop - clientHeight < 100;
+      setShowScrollButton(!isNearBottom && messages.length > 0);
+    };
+
+    chatContainer.addEventListener('scroll', handleScroll);
+    return () => chatContainer.removeEventListener('scroll', handleScroll);
+  }, [messages.length]);
+
+  // Function to scroll to bottom
+  const scrollToBottom = () => {
+    if (chatContainerRef.current) {
+      setTimeout(() => {
+        chatContainerRef.current.scrollTo({
+          top: chatContainerRef.current.scrollHeight,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+  };
 
   const sendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
@@ -21,6 +75,9 @@ const ChatInterface = () => {
     setMessages(prev => [...prev, userMessage]);
     setInputMessage('');
     setIsLoading(true);
+    
+    // Scroll to bottom after adding user message
+    setTimeout(() => scrollToBottom(), 150);
 
     try {
       console.log('📤 Sending message via HTTP:', inputMessage);
@@ -42,6 +99,8 @@ const ChatInterface = () => {
         };
 
         setMessages(prev => [...prev, botMessage]);
+        // Scroll to bottom after adding bot message
+        setTimeout(() => scrollToBottom(), 150);
       } else {
         throw new Error(response.data.error || 'Unknown error');
       }
@@ -57,6 +116,8 @@ const ChatInterface = () => {
       };
 
       setMessages(prev => [...prev, errorMessage]);
+      // Scroll to bottom after adding error message
+      setTimeout(() => scrollToBottom(), 150);
     } finally {
       setIsLoading(false);
     }
@@ -69,105 +130,90 @@ const ChatInterface = () => {
     }
   };
 
-  const fetchCentralParkProperties = async () => {
-    setIsLoading(true);
-    try {
-      console.log('🏠 Fetching Central Park properties...');
-      const response = await axios.get(`${API_BASE_URL}/api/central-park/properties`);
-      
-      if (response.data.success) {
-        const properties = response.data.properties.slice(0, 5); // Show first 5 properties
-        const propertiesText = properties.map(prop => 
-          `🏠 ${prop.title} - ${prop.price}\n📍 ${prop.address}\n🛏️ ${prop.beds} bed, ${prop.baths} bath, ${prop.sqft} sqft`
-        ).join('\n\n');
-
-        const botMessage = {
-          id: Date.now(),
-          text: `Here are some Central Park area properties:\n\n${propertiesText}\n\nTotal properties available: ${response.data.totalProperties}`,
-          sender: 'bot',
-          timestamp: new Date().toISOString(),
-          sources: ['Central Park Properties']
-        };
-
-        setMessages(prev => [...prev, botMessage]);
-      } else {
-        throw new Error(response.data.error || 'Failed to fetch properties');
-      }
-    } catch (error) {
-      console.error('❌ Error fetching Central Park properties:', error);
-      
-      const errorMessage = {
-        id: Date.now(),
-        text: `Sorry, I couldn't fetch the Central Park properties. Please try again later.`,
-        sender: 'bot',
-        timestamp: new Date().toISOString(),
-        isError: true
-      };
-
-      setMessages(prev => [...prev, errorMessage]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   return (
-    <div>
-      <div className="chat-container">
+    <div className="chat-interface">
+      <div className="chat-container" ref={chatContainerRef}>
         {messages.length === 0 && (
-          <div style={{ textAlign: 'center', color: '#666', marginTop: '2rem' }}>
-            <h3>Welcome to Alta New York AI Assistant!</h3>
-            <p>Ask me about NYC real estate, properties, or upload documents for analysis.</p>
-            <button 
-              className="btn" 
-              onClick={fetchCentralParkProperties}
-              style={{ marginTop: '1rem' }}
-            >
-              🏠 View Central Park Properties
-            </button>
+          <div className="welcome-message">
+            <div className="welcome-icon">🏠</div>
+            <h3>Welcome to Alta New York</h3>
+            <p>Your AI-powered real estate assistant for NYC properties</p>
+            <div className="welcome-tips">
+              <div className="tip">💡 Ask about latest deals</div>
+              <div className="tip">🏙️ Find properties in specific neighborhoods</div>
+              <div className="tip">📊 Get market insights and trends</div>
+            </div>
           </div>
         )}
         
         {messages.map((message) => (
           <div key={message.id} className={`message ${message.sender}`}>
-            <div style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
-              {message.sender === 'user' ? '👤 You' : '🤖 Alta AI'}
+            <div className="message-header">
+              <span className="message-avatar">
+                {message.sender === 'user' ? '👤' : '🏠'}
+              </span>
+              <span className="message-sender">
+                {message.sender === 'user' ? 'You' : 'Alta AI'}
+              </span>
+              <span className="message-time">
+                {new Date(message.timestamp).toLocaleTimeString()}
+              </span>
             </div>
-            <div style={{ whiteSpace: 'pre-wrap' }}>{message.text}</div>
+            <div className="message-content">{message.text}</div>
             {message.sources && message.sources.length > 0 && (
-              <div style={{ marginTop: '0.5rem', fontSize: '0.9rem', color: '#666' }}>
+              <div className="message-sources">
                 <strong>Sources:</strong> {message.sources.join(', ')}
               </div>
             )}
-            <div style={{ fontSize: '0.8rem', color: '#999', marginTop: '0.5rem' }}>
-              {new Date(message.timestamp).toLocaleTimeString()}
-            </div>
           </div>
         ))}
         
         {isLoading && (
-          <div className="loading">
-            <div>🤖 Alta AI is thinking...</div>
+          <div className="loading-message">
+            <div className="loading-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <span>Alta AI is thinking...</span>
           </div>
+        )}
+        
+        {/* Scroll to bottom button */}
+        {showScrollButton && (
+          <button 
+            className="scroll-to-bottom-btn"
+            onClick={scrollToBottom}
+            title="Scroll to latest message"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 14L12 19L17 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
         )}
       </div>
 
-      <div style={{ display: 'flex', gap: '1rem' }}>
-        <input
-          type="text"
-          className="input"
-          placeholder="Ask about NYC real estate..."
-          value={inputMessage}
-          onChange={(e) => setInputMessage(e.target.value)}
-          onKeyPress={handleKeyPress}
-          disabled={isLoading}
-        />
-        <button 
-          className="btn" 
-          onClick={sendMessage}
-          disabled={isLoading || !inputMessage.trim()}
-        >
-          Send
-        </button>
+      <div className="chat-input-container">
+        <div className="chat-input-wrapper">
+          <input
+            type="text"
+            className="chat-input"
+            placeholder="Ask about NYC real estate..."
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
+            onKeyPress={handleKeyPress}
+            disabled={isLoading}
+          />
+          <button 
+            className="send-button" 
+            onClick={sendMessage}
+            disabled={isLoading || !inputMessage.trim()}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   );
