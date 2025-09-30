@@ -33,10 +33,10 @@ function App() {
         <p>AI Real Estate Assistant</p>
         <div className="header-actions">
           <span className={`connection-status ${connectionStatus}`}>
-            {connectionStatus === 'connected' ? '🟢 Connected' : 
+            {connectionStatus === 'connected' ? '🟢 Connected' :
              connectionStatus === 'checking' ? '🟡 Checking...' : '🔴 Connection Error'}
           </span>
-          <button 
+          <button
             className="btn btn-secondary"
             onClick={() => setIsPropertiesModalOpen(true)}
           >
@@ -51,7 +51,7 @@ function App() {
         </div>
       </div>
 
-      <PropertiesModal 
+      <PropertiesModal
         isOpen={isPropertiesModalOpen}
         onClose={() => setIsPropertiesModalOpen(false)}
       />
